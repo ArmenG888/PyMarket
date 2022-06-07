@@ -1,0 +1,6 @@
+{% include 'market/base.html' %}
+{% block content %}
+{% for item in items %}
+    <a href="{% url 'items_selling' item.id %}"><h1>{{item.name}}</h1>
+{% endfor %}
+{% endblock content %}
