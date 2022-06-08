@@ -1,5 +1,6 @@
 {% include 'market/base.html' %}
 {% block content %}
 <h1>{{item}} ${{item.price}}</h1>
-<button type="button" class="btn btn-primary">Buy</button>
+
+<a href={% url "item_buy" item.id %}><button type="button" class="btn btn-primary">Buy</button>
 {% endblock content %}

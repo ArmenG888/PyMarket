@@ -1,7 +1,7 @@
 {% include 'market/base.html' %}
 {% block content %}
 {% for item in items %}
-    <a href="{% url 'item_selling_detail' pk=item.belongs_to.id id=item.id%}">
+    <a href="{% url 'item_selling_detail' pk=item.id %}">
     <h1>{{ item.belongs_to.name }} ${{ item.price }} Seller: {{ item.owner }}</h1>
     
     </a>

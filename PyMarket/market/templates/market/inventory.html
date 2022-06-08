@@ -1,0 +1,7 @@
+{% include 'market/base.html' %}
+{% block content %}
+{% for item in items %}
+    <h1>{{item}}</h1>
+    <button type="button" class="btn btn-primary">Sell</button>
+{% endfor %}
+{% endblock content %}
