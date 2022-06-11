@@ -1,0 +1,12 @@
+{% include 'market/base.html' %}
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+    <div class="input-group mb-3">
+        <span class="input-group-text">$</span>
+        <span class="input-group-text">{{item.price}}</span>
+        <input type="text" id="price" name="price" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+    </div>
+    <button type="submit" class="btn btn-primary">Sell</button>
+</form>
+{% endblock content %}

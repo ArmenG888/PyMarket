@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from .models import item, items
+from .forms import item_sell
 
 def home(request):
     return render(request, "market/home.html", {'items': items.objects.all()})
@@ -27,8 +28,22 @@ def item_buy(request,pk):
     return redirect('item_selling_detail', pk=pk)
 
 def inventory(request):
-    items_owned = item.objects.all().filter(owner=request.user)
+    items_owned = item.objects.all().filter(owner=request.user, selling=False)
     return render(request, "market/inventory.html", {'items':items_owned})
 
-def item_sell(request, pk):
-    pass
+def item_sell_view(request, pk):
+    item_x = item.objects.all().filter(id=pk)[0]
+    form = item_sell(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            price = form.cleaned_data['price']
+            print(price)
+            item_x.price = price
+            item_x.selling = True
+            item_x.save()
+            redirect("item_selling_detail", item_x.id)
+            
+        else:
+            form = item_sell()
+    
+    return render(request, "market/sell.html", {'form':form, 'item':item_x})
