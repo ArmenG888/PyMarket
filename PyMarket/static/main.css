@@ -1,0 +1,15 @@
+.items{
+    text-decoration: none;
+}
+.common{
+    color: rgb(130, 194, 255)
+}
+.rare{
+    color: rgb(187, 103, 255)
+}
+.ultra_rare{
+    color: rgb(255, 49, 49)
+}
+.legendary{
+    color: rgb(gold)
+}
