@@ -1,7 +1,7 @@
 {% include 'market/base.html' %}
 {% block content %}
 {% for item in items %}
-    <a href="{% url 'items_selling' item.id %}" class="items {{item.rarity}}"><h1>{{item.rarity}} | {{item.name}} | {{item.count_selling}} | {{item.min_price}}</h1></a>
+    <a href="{% url 'items_selling' item.id %}" class="items {{item.rarity}}"><h1>{{item.rarity}} | {{item.name}} | Sellings {{item.count_selling}} | ${{item.min_price}}</h1></a>
   
 {% endfor %}
 {% endblock content %}

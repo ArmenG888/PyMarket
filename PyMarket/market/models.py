@@ -12,6 +12,8 @@ class item(models.Model):
     def __str__(self):
         return self.belongs_to.name + " " +  self.owner.username
 
+    class Meta:
+        ordering = ['price']
 class items(models.Model):
     name = models.CharField(max_length=500)
     items = models.ManyToManyField("market.item", blank=True)
@@ -33,7 +35,7 @@ class items(models.Model):
         return len(self.items.all().filter(selling=True))
     def min_price(self):
         if len(self.items.all().filter(selling=True)) > 0:
-            return self.items.all().order_by("price")[0].price
+            return self.items.all().filter(selling=True).order_by("price")[0].price
         return 0.00
     def __str__(self):
         return self.name + " " + str(len(self.items.all()))

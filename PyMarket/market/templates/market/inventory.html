@@ -1,7 +1,9 @@
 {% include 'market/base.html' %}
 {% block content %}
 {% for item in items %}
-    <h1>{{item}}</h1>
+    <h1>{{item.belongs_to.name}}</h1>
+    <img style="height:100px; width:auto;"src="{{item.belongs_to.image.url}}">
     <a href="{% url 'item_sell' item.id %}"><button type="button" class="btn btn-primary">Sell</button></a>
+    
 {% endfor %}
 {% endblock content %}
